@@ -1,0 +1,31 @@
+package: github.com/epappas/trading
+homepage: https://github.com/epappas/trading
+license: LICENSE.md
+owners:
+- name: Evangelos Pappas
+  email: epappas@evalonlabs.com
+  homepage: https://evalonlabs.com
+import:
+- package: github.com/stellar/go
+  subpackages:
+  - '...'
+- package: github.com/agl/ed25519
+- package: github.com/getsentry/raven-go
+- package: github.com/pdepip/go-binance
+  version: ^0.1.1
+  subpackages:
+  - '...'
+- package: github.com/go-kit/kit
+  version: 0.6.0
+  subpackages:
+  - log
+  - log/level
+- package: github.com/gorilla/mux
+  version: ^1.6.1
+- package: github.com/gin-gonic/gin
+  version: ^1.2.0
+- package: github.com/gin-contrib/sse
+- package: gopkg.in/go-playground/validator.v9
+  version: ^9.9.3
+- package: github.com/spf13/viper
+  version: ^1.0.0

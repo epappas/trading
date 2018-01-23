@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  horizon:
+    container_name: "horizon"
+    image: stellar/quickstart
+    # command: --pubnet
+    command: --testnet
+    ports:
+      - 8000:8000
+      - 11626:11626
+      - 11625:11625
+    volumes:
+      - ./data/horizon:/opt/stellar
+      - ./data/horizon/log:/var/log/supervisor
+  stellar:
+    container_name: "stellar"
+    image: stellar/stellar-core
+    # # command: --pubnet
+    # command: --testnet
+    ports:
+      - 11626:11626
+      - 11625:11625
+    volumes:
+      - ./data/stellar/data:/data
+      - ./data/stellar/postgresql:/postgresql-unix-sockets
+      - ./data/stellar/heka:/heka
+  stellar-state:
+    container_name: "stellar-state"
+    image: stellar/stellar-core-state
+    ports:
+      - 5541:5432
+    volumes:
+      - ./data/stellar-state/data:/data
+      - ./data/stellar-state/postgresql:/postgresql-unix-sockets
